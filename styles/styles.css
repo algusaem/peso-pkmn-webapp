@@ -1,0 +1,411 @@
+* {
+    font-family: "Roboto",arial,sans-serif;
+    box-sizing: border-box;
+}
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 98.78%;
+    width: 100%;
+    background: url("../img/background.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    font-size: 100%;
+    line-height: 150%;
+    margin-bottom: 0.75em;
+    background-color: #80af72;
+}
+header{
+    width: 100%;
+}
+input[type="search"]::placeholder{
+    text-align: center;
+}
+#botonForm:hover{
+    border: 2px solid #5f5f5f;
+    box-shadow: 0px 0px 0px 1px rgb(34, 34, 37);
+    -webkit-animation: anim-shadow .3s forwards;
+            animation: anim-shadow .3s forwards;
+}
+@-webkit-keyframes anim-shadow{
+    100%{
+        box-shadow: 0px 0px 50px 20px rgba(0, 0, 0, 0)
+    }
+}
+@keyframes anim-shadow{
+    100%{
+        box-shadow: 0px 0px 50px 20px rgba(0, 0, 0, 0)
+    }
+}
+/* clears the 'X' on inputs from Internet Explorer */
+input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+
+/* clears the 'X' on inputs from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+.container #nombrePokemon{
+	border: 0;
+	outline: none;
+	color: #8b7d77;
+}
+.search_wrap{
+    width: 500px;
+	margin: 38px auto;
+}
+.search_wrap .search_box{
+	position: relative;
+	width: 500px;
+	height: 60px;
+}
+.search_wrap .search_box #nombrePokemon{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 10px 20px;
+	border-radius: 3px;
+	font-size: 18px;
+}
+.search_wrap .search_box .btn{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 60px;
+	height: 100%;
+	background: #7690da;
+	z-index: 1;
+	cursor: pointer;
+}
+.search_wrap .search_box .btn:hover{
+    background: #708bd2;	
+}
+.search_wrap .search_box .btn.btn_common #botonForm{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#ff0000 50%, #ffffff 50%);
+    border: 2px solid #000000;
+    padding: 20px 0px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    color: #15295e;
+    font-family: "Roboto",arial,sans-serif;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.search_wrap.search_wrap_1 .search_box .btn{
+	right: 0;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+.search_wrap.search_wrap_1 .search_box #nombrePokemon{
+	padding-right: 80px;
+}
+#nombrePokemon:hover{
+    box-shadow: 0 0 0 0 #fff inset, #7b8885 0 0 0 2px;
+}
+#nombrePokemon:focus{
+    background: #fff;
+    outline: 0;
+    box-shadow: 0 0 0 0 #fff inset, #7b8885 0 0 0 3px;
+}
+.imagenBusqueda{
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    pointer-events: none;
+}
+#idNombrePokemon{
+    text-decoration: underline;
+    padding-top: 18px;
+    font-size: 32px;
+}
+
+/* Carta del Pokémon */
+.cartaPokemon {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: 74px 300px 80px;
+    grid-template-areas: "titulo" "imagen" "peso";
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    font-family: roboto;
+    text-align: center;
+    margin: 0 auto;
+    width: 300px;
+    display: none;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.cartaPokemon:hover{
+    transform: scale(1.2);
+}
+
+.tituloCarta {
+    grid-area: titulo;
+}
+.imagenCarta {
+    grid-area: imagen;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.fotoCarta{
+    width: 300px;
+    height: 300px;
+}
+#pesoCarta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 10px;
+    background: #ff0000;
+    color: white;
+    text-shadow: 0px 0px 4px #000000;
+}
+#contenedorError{
+    border: 1px solid;
+    padding: 15px 10px 15px 50px;
+    color: #D8000C;
+    font-weight: bold;
+    background-color: #FFBABA;
+    margin: 0 auto;
+    width: 500px;
+}
+.tituloPagina{
+    text-decoration:underline;
+    color: white;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
+    font-family:'Verdana';
+}
+
+/* Loader de la página */
+.loader {
+	color: #fff;
+	position: fixed;
+	box-sizing: border-box;
+	left: -9999px;
+	top: -9999px;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	z-index: 999999
+}
+.loader:after,
+.loader:before {
+	box-sizing: border-box;
+	display: none
+}
+.loader.is-active {
+	background-color: rgba(0, 0, 0, .85);
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0
+}
+.loader.is-active:after,
+.loader.is-active:before {
+	display: block
+}
+.loader-pokeball:before {
+	content: "";
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top: 50%;
+	left: 50%;
+	margin: -50px 0 0 -50px;
+	background: linear-gradient(180deg, red 42%, #000 0, #000 58%, #fff 0);
+	background-repeat: no-repeat;
+	background-color: #fff;
+	border-radius: 50%;
+	z-index: 1;
+	animation: movePokeball 1s linear infinite both
+}
+.loader-pokeball:after {
+	content: "";
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	top: 50%;
+	left: 50%;
+	margin: -12px 0 0 -12px;
+	background-color: #fff;
+	border-radius: 50%;
+	z-index: 2;
+	animation: movePokeball 1s linear infinite both, flashPokeball .5s infinite alternate;
+	border: 2px solid #000;
+	box-shadow: 0 0 0 5px #fff, 0 0 0 10px #000
+}
+@keyframes movePokeball {
+	0% {
+		transform: translateX(0) rotate(0)
+	}
+	15% {
+		transform: translatex(-10px) rotate(-5deg)
+	}
+	30% {
+		transform: translateX(10px) rotate(5deg)
+	}
+	45% {
+		transform: translatex(0) rotate(0)
+	}
+}
+@keyframes flashPokeball {
+	0% {
+		background-color: #fff
+	}
+	to {
+		background-color: #fd0
+	}
+}
+
+/* Barra de Navegación */
+nav{
+    background-color: rgb(58, 57, 57);
+    height: 50px;
+    margin-bottom: 30px;
+}
+nav ul {
+    height: 100%;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+nav li {
+    display: inline;
+    margin: 0px 20px;
+}
+
+/* Animación underline en la barra de navegación */
+nav a{
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+nav a:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+nav a:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* MODAL */
+
+.modal {
+    color: white;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.7);
+}
+  
+.modal-content {
+    background-color: #474747;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    max-width: 500px;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    position: relative;
+    border-radius: 12px;
+}
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 5%;
+    outline: none;
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    transition: background-color .17s ease,color .17s ease;
+}
+
+/* Animación modal */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+/* Formato texto modal */
+.text-instrucciones{
+    text-align: left;
+}
+
+.text-contacto span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.text-contacto a {
+    margin-left: 0.2rem;
+}
+
+.text-contacto p {
+    margin-left: 0.2rem;
+}
+
+.text-instrucciones span{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.text-instrucciones p {
+    margin-left: 0.4rem;
+    font-weight: bold;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 630px) {
+    .modal-content h1{
+        font-size: 1.2em;
+    }
+}
