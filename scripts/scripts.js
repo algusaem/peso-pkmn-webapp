@@ -15,9 +15,9 @@ async function cargarPokemon() {
         const data = await res.json();
 
         //Pasa los datos y da forma a la carta pokémon además de darle la propiedad clicable.
-        let nombrePokemon = data.name.charAt(0).toUpperCase() + data.name.slice(1);
         document.getElementById("idNombrePokemon").innerHTML = nombrePokemon;
         document.getElementById("contenedorCartaPokemon").addEventListener('click', function(e) {
+             let nombrePokemon = data.name.charAt(0).toUpperCase() + data.name.slice(1);
             window.open("https://www.wikidex.net/wiki/" + nombrePokemon, '_blank');
         }, false);
         
