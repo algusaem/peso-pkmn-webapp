@@ -14,10 +14,10 @@ async function cargarPokemon() {
         const res = await fetch("https://pokeapi.co/api/v2/pokemon/"+pkmnSeleccionado.toLowerCase());
         const data = await res.json();
 
-        //Pasa los datos y da forma a la carta pokémon además de darle la propiedad clicable.
-        document.getElementById("idNombrePokemon").innerHTML = nombrePokemon;
         document.getElementById("contenedorCartaPokemon").addEventListener('click', function(e) {
-             let nombrePokemon = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+            //Pasa los datos y da forma a la carta pokémon además de darle la propiedad clicable.
+            document.getElementById("idNombrePokemon").innerHTML = nombrePokemon;
+            let nombrePokemon = data.name.charAt(0).toUpperCase() + data.name.slice(1);
             window.open("https://www.wikidex.net/wiki/" + nombrePokemon, '_blank');
         }, false);
         
